@@ -87,7 +87,7 @@ def test_detection_algo(algo, dog_is_target=True, test_sample_size=100, debug=Fa
    
     return human_count, wrong_human, dog_count, wrong_dog
 
-#human_count, wrong_human, dog_count, wrong_dog = test_detection_algo(face_detector, False
+
 from PIL import Image
 import torchvision.transforms as transforms
 
@@ -118,7 +118,7 @@ def load_image(img_path, max_size=255, crop=224, shape=None):
     return image
 
 
-# In[20]:
+
 
 
 from PIL import Image
@@ -142,7 +142,6 @@ def VGG16_predict(img_path):
     img = load_image(img_path)
     if use_cuda:
         img = img.to('cuda')
- #   print(img)
     output = VGG16(img)
     
     _ , index = torch.max(output, 1)
@@ -152,10 +151,7 @@ def VGG16_predict(img_path):
 
 def dog_detector(img_path):
     x = VGG16_predict(img_path)
-    return x < 269 and x > 150  
-
-
-#human_count2, wrong_human2, dog_count2, wrong_dog2 = test_detection_algo(dog_detector)
+    return x < 269 and x > 150
 
 
 ## TODO: Specify data loaders
